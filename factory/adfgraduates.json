@@ -1,0 +1,9 @@
+{
+	"name": "adfgraduates",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "de0cb6ba-e925-4883-b82f-7f39c527affb",
+		"tenantId": "0b3fc178-b730-4e8b-9843-e81259237b77"
+	}
+}
