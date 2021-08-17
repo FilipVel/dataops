@@ -1,0 +1,15 @@
+{
+	"name": "DestinationDataset_q3s",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "Try2"
+		}
+	}
+}
