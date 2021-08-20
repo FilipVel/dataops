@@ -9,7 +9,8 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"table": "Try2"
+			"schema": "dbo",
+			"table": "filtered"
 		}
 	}
 }
