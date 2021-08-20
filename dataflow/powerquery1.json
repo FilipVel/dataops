@@ -1,0 +1,19 @@
+{
+	"name": "powerquery1",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "not_filtered",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~>  not_filtered",
+					"dataset": {
+						"referenceName": "not_filtered",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared not_filtered = let\r\n  AdfDoc = Sql.Database(\"mysqlserver997.database.windows.net\", \"graduates\", [CreateNavigationProperties = false]),\r\n  InputTable = AdfDoc{[Schema = \"dbo\", Item = \"Try2\"]}[Data]\r\nin\r\n  InputTable;\r\nshared filtered = let\r\n  AdfDoc = Sql.Database(\"mysqlserver997.database.windows.net\", \"graduates\", [CreateNavigationProperties = false]),\r\n  InputTable = AdfDoc{[Schema = \"dbo\", Item = \"filtered\"]}[Data]\r\nin\r\n  InputTable;\r\nshared UserQuery = let\r\n  Source = filtered,\r\n  #\"Sorted rows\" = Table.Sort(Source, {{\"vote_average\", Order.Descending}})\r\nin\r\n  #\"Sorted rows\";\r\n"
+		}
+	}
+}
