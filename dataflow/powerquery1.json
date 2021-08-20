@@ -13,7 +13,7 @@
 					}
 				}
 			],
-			"script": "section Section1;\r\nshared not_filtered = let\r\n  AdfDoc = Sql.Database(\"mysqlserver997.database.windows.net\", \"graduates\", [CreateNavigationProperties = false]),\r\n  InputTable = AdfDoc{[Schema = \"dbo\", Item = \"Try2\"]}[Data]\r\nin\r\n  InputTable;\r\nshared UserQuery = let\r\n  Source = not_filtered,\r\n  #\"Changed column type\" = Table.TransformColumnTypes(Source, {{\"vote_average\", type number}}),\r\n  #\"Filtered rows\" = Table.SelectRows(#\"Changed column type\", each [vote_average] >= 9.5)\r\nin\r\n  #\"Filtered rows\";\r\n"
+			"script": "section Section1;\r\nshared not_filtered = let\r\n  AdfDoc = Sql.Database(\"mysqlserver997.database.windows.net\", \"graduates\", [CreateNavigationProperties = false]),\r\n  InputTable = AdfDoc{[Schema = \"dbo\", Item = \"Try2\"]}[Data]\r\nin\r\n  InputTable;\r\nshared UserQuery = let\r\n  Source = not_filtered,\r\n  #\"Changed column type\" = Table.TransformColumnTypes(Source, {{\"vote_average\", type number}}),\r\n  #\"Filtered rows\" = Table.SelectRows(#\"Changed column type\", each [vote_average] >= 9.5),\r\n  #\"Changed column type 1\" = Table.TransformColumnTypes(#\"Filtered rows\", {{\"vote_average\", type text}})\r\nin\r\n  #\"Changed column type 1\";\r\n"
 		}
 	}
 }
